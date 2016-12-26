@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">One Day at a Time</string>
-    <string name="welcome">Let\'s Get Started</string>
-    <string name="title_activity_options">Options</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="app_name">Sobriety Daily High Score</string>
+    <string name="intro_pick_date">Which was your first day sober?</string>
+    <string name="save_date">Save</string>
 
     <string name="action_settings">Settings</string>
+    <string name="and_counting">and counting</string>
+    <string name="default_units">days</string>
+    <string name="date_key">date_key</string>
+
 </resources>
