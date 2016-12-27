@@ -15,12 +15,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (getSharedPreferences("userSettings", Context.MODE_PRIVATE).getLong(getString(R.string.date_key), -1) >= 0) {
+            Intent intent = new Intent(this, CountdownActivity.class);
+            startActivity(intent);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
     public void saveDate(View view) {
-        Intent intent = new Intent(this, CountdownActivity.class);
         DatePicker pickedDate = (DatePicker) findViewById(R.id.startDate);
         Calendar calendar = Calendar.getInstance();
         calendar.set(pickedDate.getYear(), pickedDate.getMonth(), pickedDate.getDayOfMonth());
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putLong(getString(R.string.date_key), calendar.getTime().getTime());
         editor.commit();
 
+        Intent intent = new Intent(this, CountdownActivity.class);
         startActivity(intent);
     }
 }
