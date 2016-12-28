@@ -6,6 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="and_counting">and counting</string>
     <string name="default_units">days</string>
+    <string name="default_num_days">0</string>
     <string name="date_key">date_key</string>
     <string name="nav_bar">Navigation</string>
 
