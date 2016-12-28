@@ -7,5 +7,8 @@
     <string name="and_counting">and counting</string>
     <string name="default_units">days</string>
     <string name="date_key">date_key</string>
+    <string name="nav_bar">Navigation</string>
+
+    <string name="set_date_setting">Choose Day 1</string>
 
 </resources>
