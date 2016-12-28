@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sobriety Daily High Score</string>
+    <string name="app_name">Sobriety Counter Widget</string>
     <string name="intro_pick_date">Which was your first day sober?</string>
     <string name="save_date">Save</string>
 
