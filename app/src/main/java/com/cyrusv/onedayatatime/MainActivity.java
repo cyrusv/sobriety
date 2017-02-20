@@ -30,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("userSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putLong(getString(R.string.date_key), calendar.getTime().getTime());
-        editor.commit();
+        editor.apply();
+
+        MainAppWidgetProvider.updateMyWidgets(getBaseContext());
 
         Intent intent = new Intent(this, CountdownActivity.class);
         startActivity(intent);
