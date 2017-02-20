@@ -46,7 +46,8 @@ public class MainAppWidgetProvider extends AppWidgetProvider {
                     .getLong(context.getString(R.string.date_key), 0);
             long today = new Date().getTime();
 
-            String days = Long.toString((today-startDate)/(60*60*24*1000));
+            long longDays = (today-startDate)/(60*60*24*1000);
+            String days = Long.toString(longDays);
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.widget);

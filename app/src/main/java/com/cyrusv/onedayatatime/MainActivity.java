@@ -26,10 +26,16 @@ public class MainActivity extends AppCompatActivity {
     public void saveDate(View view) {
         DatePicker pickedDate = (DatePicker) findViewById(R.id.startDate);
         Calendar calendar = Calendar.getInstance();
-        calendar.set(pickedDate.getYear(), pickedDate.getMonth(), pickedDate.getDayOfMonth());
+        calendar.set(pickedDate.getYear(), pickedDate.getMonth(), pickedDate.getDayOfMonth(),
+                0, 0, 0);
+        long tz = calendar.get(Calendar.ZONE_OFFSET);
+
+        long ptime = calendar.getTimeInMillis();
         SharedPreferences sharedPref = getSharedPreferences("userSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putLong(getString(R.string.date_key), calendar.getTime().getTime());
+
+        // Store 12am Epoch Time
+        editor.putLong(getString(R.string.date_key), ptime+tz);
         editor.apply();
 
         MainAppWidgetProvider.updateMyWidgets(getBaseContext());
