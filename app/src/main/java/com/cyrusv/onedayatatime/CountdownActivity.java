@@ -10,7 +10,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class CountdownActivity extends AppCompatActivity {
 
@@ -26,6 +29,12 @@ public class CountdownActivity extends AppCompatActivity {
 
         TextView textView = (TextView) findViewById(R.id.num_days);
         textView.setText(days);
+
+        TextView startDateTxtVw = (TextView) findViewById(R.id.startDate);
+        SimpleDateFormat fmt = new SimpleDateFormat("d MMMM yyyy");
+        Calendar c = new GregorianCalendar();
+        c.setTimeInMillis(startDate);
+        startDateTxtVw.setText(fmt.format(c.getTime()));
 
         Toolbar tb = (Toolbar) findViewById(R.id.my_toolbar);
         tb.setTitle("Days Sober");
@@ -46,7 +55,7 @@ public class CountdownActivity extends AppCompatActivity {
             SharedPreferences sharedPref = getSharedPreferences("userSettings", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putLong(getString(R.string.date_key), -1);
-            editor.commit();
+            editor.apply();
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
