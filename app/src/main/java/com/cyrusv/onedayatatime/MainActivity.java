@@ -15,10 +15,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (getSharedPreferences("userSettings", Context.MODE_PRIVATE).getLong(getString(R.string.date_key), -1) >= 0) {
+        Boolean ask = false;
+        Bundle bund = getIntent().getExtras();
+        if (bund != null) {
+            ask = bund.getBoolean("askDate", false);
+        }
+
+        // Go to Countdown
+        if (!ask && getSharedPreferences("userSettings", Context.MODE_PRIVATE).getLong(getString(R.string.date_key), -1) >= 0) {
             Intent intent = new Intent(this, CountdownActivity.class);
             startActivity(intent);
         }
+
+        // Show Date Picker
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -28,14 +37,13 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.set(pickedDate.getYear(), pickedDate.getMonth(), pickedDate.getDayOfMonth(),
                 0, 0, 0);
-        long tz = calendar.get(Calendar.ZONE_OFFSET);
 
         long ptime = calendar.getTimeInMillis();
         SharedPreferences sharedPref = getSharedPreferences("userSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         // Store 12am Epoch Time
-        editor.putLong(getString(R.string.date_key), ptime+tz);
+        editor.putLong(getString(R.string.date_key), ptime);
         editor.apply();
 
         MainAppWidgetProvider.updateMyWidgets(getBaseContext());

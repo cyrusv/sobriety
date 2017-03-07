@@ -2,7 +2,7 @@ package com.cyrusv.onedayatatime;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -52,12 +52,11 @@ public class CountdownActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.set_date:
-            SharedPreferences sharedPref = getSharedPreferences("userSettings", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putLong(getString(R.string.date_key), -1);
-            editor.apply();
 
             Intent intent = new Intent(this, MainActivity.class);
+            Bundle b = new Bundle();
+            b.putBoolean("askDate", true);
+            intent.putExtras(b);
             startActivity(intent);
             break;
         default:
