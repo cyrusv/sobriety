@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Widget Contador de Sobriedad</string>
+    <string name="intro_pick_date">¿Cuál fue tu primer día sobrio?</string>
+    <string name="save_date">Salvar</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="and_counting">y contando</string>
+    <string name="default_units">días</string>
+    <string name="default_num_days">0</string>
+    <string name="date_key">date_key</string>
+    <string name="nav_bar">Navegación</string>
+    <string name="set_date_setting">Elija el día 1</string>
+</resources>
